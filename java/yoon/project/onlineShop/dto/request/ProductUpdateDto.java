@@ -1,9 +1,10 @@
 package yoon.project.onlineShop.dto.request;
 
+import lombok.Data;
 import lombok.Getter;
 
 @Getter
-public class ProductRegisterDto {
+public class ProductUpdateDto {
 
     private String name;
 

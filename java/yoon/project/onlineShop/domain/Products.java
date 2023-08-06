@@ -36,9 +36,10 @@ public class Products {
     private LocalDateTime regdate;
 
     @Builder
-    public Products(Members seller, String name, int price){
+    public Products(Members seller, String name, int price, String img){
         this.seller = seller;
         this.name = name;
         this.price = price;
+        this.img = img;
     }
 }
