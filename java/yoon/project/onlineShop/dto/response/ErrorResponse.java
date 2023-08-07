@@ -1,14 +1,17 @@
 package yoon.project.onlineShop.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
+@Data
 public class ErrorResponse {
 
     private String code;
 
     private String message;
 
+
+    public ErrorResponse(){
+        this.code = null;
+        this.message = null;
+    }
 }

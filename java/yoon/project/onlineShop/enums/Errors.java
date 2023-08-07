@@ -7,13 +7,11 @@ public enum Errors {
 
     //A
     //USER REGISTER, LOGIN
-    USER_EMAIL_INVALID("A001", "이메일 형식이 유효하지 않습니다."),
+    USER_ID_BLANK("A001", "아이디를 입력해주세요."),
 
-    USER_EMAIL_BLANK("A002", "이메일을 입력해주세요."),
+    USER_PASSWORD_BLANK("A002", "비밀번호를 입력해주세요."),
 
-    USER_PASSWORD_BLANK("A003", "비밀번호를 입력해주세요."),
-
-    USER_NAME_BLANK("A004", "사용자 이름을 입력해주세요."),
+    USER_NAME_BLANK("A003", "사용자 이름을 입력해주세요."),
 
     //B
     //PRODUCT REGISTER, UPDATE, DELETE
@@ -22,7 +20,14 @@ public enum Errors {
 
     PRODUCT_PRICE_BLANK("B002", "상품 가격을 입력해주세요."),
 
-    PRODUCT_IMAGE_BLANK("B003", "상품 이미지를 올려주세요");
+    PRODUCT_IMAGE_BLANK("B003", "상품 이미지를 올려주세요"),
+
+    //C
+    //Login Failed
+
+    USER_NAME_NOT_FOUND("C001", "존재하지 않는 아이디입니다."),
+
+    PASSWORD_NOT_FOUND("C002", "아이디 또는 비밀번호가 일치하지 않습니다.");
 
     private final String code;
 

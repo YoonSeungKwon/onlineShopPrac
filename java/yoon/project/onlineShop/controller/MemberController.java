@@ -3,11 +3,14 @@ package yoon.project.onlineShop.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import yoon.project.onlineShop.dto.request.MemberLoginDto;
 import yoon.project.onlineShop.dto.request.MemberRegisterDto;
 import yoon.project.onlineShop.dto.response.MemberResponse;
 import yoon.project.onlineShop.dto.response.ResponseMessage;
+import yoon.project.onlineShop.exception.sequnce.LoginValidationSequence;
+import yoon.project.onlineShop.exception.sequnce.RegisterValidationSequence;
 import yoon.project.onlineShop.service.MemberService;
 
 @RestController
@@ -33,7 +36,7 @@ public class MemberController {
     }
 
     @PostMapping("")
-    public ResponseEntity<ResponseMessage> register(@RequestBody MemberRegisterDto dto){
+    public ResponseEntity<ResponseMessage> register(@RequestBody @Validated(RegisterValidationSequence.class) MemberRegisterDto dto){
 
         MemberResponse result = memberService.register(dto);
 
@@ -46,7 +49,7 @@ public class MemberController {
     };
 
     @PostMapping("/login")
-    public ResponseEntity<ResponseMessage> login(@RequestBody MemberLoginDto dto){
+    public ResponseEntity<ResponseMessage> login(@RequestBody @Validated(LoginValidationSequence.class) MemberLoginDto dto){
 
         MemberResponse result = memberService.login(dto);
 
