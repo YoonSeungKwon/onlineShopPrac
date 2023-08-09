@@ -7,6 +7,7 @@ import yoon.project.onlineShop.domain.Members;
 @Repository
 public interface MemberRepository extends JpaRepository<Members, Long> {
 
+    Members findMembersByRefreshToken(String token);
     Members findMembersById(String id);
 
 }
