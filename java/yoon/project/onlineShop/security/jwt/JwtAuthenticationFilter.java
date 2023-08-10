@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
+import yoon.project.onlineShop.enums.Errors;
 
 import java.io.IOException;
 
@@ -27,7 +28,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         else if(acc_token != null){
             String ref_token = jwtProvider.resolveRefreshToken(request);
             if(ref_token == null)
-                throw new JwtException("Throw 401 Error to Request Refresh Token Header from Frontend");
+                throw new JwtException(Errors.ACCESS_TOKEN_EXPIRED.getCode());
             if(jwtProvider.validateToken(ref_token)){
                 String new_token = jwtProvider.createNewToken(ref_token);
                 Authentication authentication = jwtProvider.getAuthentication(new_token);
