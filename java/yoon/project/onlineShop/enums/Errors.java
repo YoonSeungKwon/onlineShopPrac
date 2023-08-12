@@ -27,7 +27,13 @@ public enum Errors {
 
     USER_NAME_NOT_FOUND("C001", "존재하지 않는 아이디입니다."),
 
-    PASSWORD_NOT_FOUND("C002", "아이디 또는 비밀번호가 일치하지 않습니다.");
+    PASSWORD_NOT_FOUND("C002", "아이디 또는 비밀번호가 일치하지 않습니다."),
+
+    //D ( 401)
+    ACCESS_TOKEN_EXPIRED("D001", "엑세스 토큰이 만료되었습니다."),
+    REFRESH_TOKEN_EXPIRED("D002", "리프레쉬 토큰이 만료되었습니다."),
+
+    Internal_Server_Error("Z001", "서버 내부 에러");
 
     private final String code;
 
