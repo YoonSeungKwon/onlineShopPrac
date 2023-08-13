@@ -42,4 +42,16 @@ public class OrderService {
         return toResponse(orderRepository.save(order));
     }
 
+    public OrderResponse updateOrder(String productIdx, OrderDto dto){
+        Members member = (Members) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Products product = productRepository.findProductsByIdx(Long.parseLong(productIdx));
+        Orders prevOrder = orderRepository.findOrdersByBuyerAndProduct(member, product);
+        if(prevOrder == null)
+            throw new UsernameNotFoundException(null);
+
+        prevOrder.setAddress(dto.getAddress());
+        prevOrder.setCount(dto.getCount());
+        return toResponse(orderRepository.save(prevOrder));
+    }
+
 }

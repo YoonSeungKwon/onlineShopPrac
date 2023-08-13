@@ -30,5 +30,19 @@ public class OrderController {
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
+    @PutMapping("/{productIdx}")
+    public ResponseEntity<ResponseMessage> updateProduct(@PathVariable String productIdx, @RequestBody OrderDto dto){
+
+        OrderResponse result = orderService.updateOrder(productIdx, dto);
+
+        ResponseMessage message = new ResponseMessage();
+
+        message.setCode(HttpStatus.OK);
+        message.setMessage("주문 변경 완료");
+        message.setData(result);
+
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
 
 }
